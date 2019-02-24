@@ -9,13 +9,20 @@ import { Router } from '@angular/router';
 })
 export class ThumbnailsViewComponent implements OnInit {
 
-  constructor( private photoService: PhotoService, private router: Router) {}
   photos: Photo[] = [];
+  constructor( private photoService: PhotoService, private router: Router) {}
+
   ngOnInit() {
-    this.photos = this.photoService.getPhotos();
-    this.photos.forEach( (photo: Photo) => {
-      photo.show = false;
-    });
+    this.getPhotos();
+  }
+  getPhotos() {
+    this.photoService.getPhotos().subscribe(
+      (photos: Photo[] ) => {
+        this.photos.forEach( (photo: Photo) => {
+          photo.show = false;
+        });
+        this.photos = photos; },
+      (error) => console.log(error));
   }
   click(i: number) {
     console.log(i);

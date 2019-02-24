@@ -7,14 +7,9 @@ import { HttpClient } from '@angular/common/http';
 export class PhotoService {
 
   photos: Photo[] = [];
-  constructor(private http: HttpClient) {
-    this.http.get<Photo[]>('https://jsonplaceholder.typicode.com/photos?_limit=100')
-    .subscribe(
-      (photos: Photo[] ) => {this.photos = photos; },
-      (error) => console.log(error));
-   }
+  constructor(private http: HttpClient) { }
 
   getPhotos() {
-    return this.photos;
+    return this.http.get<Photo[]>('https://jsonplaceholder.typicode.com/photos?_limit=100');
   }
 }
