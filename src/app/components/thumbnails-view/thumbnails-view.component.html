@@ -1,0 +1,9 @@
+<div class="container">
+    <mat-grid-list cols="4">
+      <mat-grid-tile *ngFor="let photo of photos; let i=index" (deferLoad)="photo.show=true"> 
+        <mat-card *ngIf="photo.show | async">
+          <img  [class]="expression"mat-card-content src={{photo.thumbnailUrl}} alt="No image" (click)="click(i)"/> 
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+</div>
