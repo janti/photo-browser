@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ThumbnailsViewComponent } from './components/thumbnails-view/thumbnails-view.component';
-import { PhotoViewComponent } from './components/photo-view/photo-view.component';
+import { ThumbnailsComponent } from './components/thumbnails/thumbnails.component';
+import { PhotoComponent } from './components/photo/photo.component';
 
 const routes: Routes = [
-  { path: 'thumbnails', component: ThumbnailsViewComponent },
-  { path: 'photo/:id', component: PhotoViewComponent },
+  { path: 'thumbnails', component: ThumbnailsComponent },
+  { path: 'photo/:id', component: PhotoComponent },
   { path: '', redirectTo: 'thumbnails', pathMatch: 'full'}
 
 ];

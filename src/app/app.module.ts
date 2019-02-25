@@ -4,17 +4,18 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatCardModule, MatGridListModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule, MatGridListModule } from '@angular/material';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { DeferLoadModule } from '@trademe/ng-defer-load';
-import { ThumbnailsViewComponent } from './components/thumbnails-view/thumbnails-view.component';
-import { PhotoViewComponent } from './components/photo-view/photo-view.component';
+import { ThumbnailsComponent } from './components/thumbnails/thumbnails.component';
+import { PhotoComponent } from './components/photo/photo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ThumbnailsViewComponent,
-    PhotoViewComponent
+    ThumbnailsComponent,
+    PhotoComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +24,8 @@ import { PhotoViewComponent } from './components/photo-view/photo-view.component
     BrowserAnimationsModule,
     MatCardModule,
     MatGridListModule,
-    DeferLoadModule
+    DeferLoadModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

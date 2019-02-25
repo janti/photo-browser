@@ -7,7 +7,4 @@ import { PhotoService } from './services/photo-service.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-
-  title = 'photo-browser';
-
 }

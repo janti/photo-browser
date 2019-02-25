@@ -1,0 +1,11 @@
+<div class="container">
+  <mat-card *ngIf="photo">
+    <mat-card-header>
+      <mat-card-title>{{photo.title}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image [class]="expression" src={{photo.url}} /> 
+    <mat-card-content>
+      
+    </mat-card-content>
+  </mat-card>
+</div>
