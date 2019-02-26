@@ -25,7 +25,7 @@ export class ThumbnailsComponent implements OnInit {
   }
 
   getPhotos() {
-    this.photoService.getPhotos( this.pageSize, this.pageIndex ).subscribe(
+    this.photoService.getPhotos( this.pageSize, this.pageIndex ). subscribe(
       (photos: Photo[] ) => {
         this.photos.forEach( (photo: Photo) => {
           photo.show = false;
