@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ThumbnailsComponent } from './thumbnails.component';
+import { MatPaginatorModule } from '@angular/material';
+import { CoreModule } from 'src/app/core/core.module';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('ThumbnailsComponent', () => {
   let component: ThumbnailsComponent;
@@ -8,7 +12,11 @@ describe('ThumbnailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ThumbnailsComponent ]
+      imports: [
+        CoreModule,
+        AppRoutingModule,
+        HttpClientModule],
+      declarations: []
     })
     .compileComponents();
   }));

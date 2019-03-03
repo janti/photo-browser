@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
-import { PhotoService } from 'src/app/services/photo-service.service';
+import { PhotoService } from 'src/app/services/photo.service';
 import { Location } from '@angular/common';
+import { Photo } from 'src/app/models/photo';
 
 @Component({
   selector: 'app-photo',

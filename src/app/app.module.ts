@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { AlbumThumbnailsComponent } from './components/albums/album-thumbnails/album-thumbnails.component';
 
 @NgModule({
   declarations: [

@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PhotoComponent } from './photo.component';
+import { CoreModule } from 'src/app/core/core.module';
+import { ActivatedRoute } from '@angular/router';
+import { AppRoutingModule } from 'src/app/app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('PhotoComponent', () => {
   let component: PhotoComponent;
@@ -8,7 +12,11 @@ describe('PhotoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PhotoComponent ]
+      imports: [
+        CoreModule,
+        AppRoutingModule,
+        HttpClientModule],
+      declarations: []
     })
     .compileComponents();
   }));

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { PhotoService } from 'src/app/services/photo-service.service';
+import { PhotoService } from 'src/app/services/photo.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { Photo } from 'src/app/models/photo';
 
 @Component({
   selector: 'app-album-thumbnails',

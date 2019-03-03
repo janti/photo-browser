@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { Photo } from '../models/photo';
+import { Album } from '../models/album';
 
 const BASE_URL: string = environment.baseURL;
 

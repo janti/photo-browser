@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { PhotoService } from 'src/app/services/photo-service.service';
+import { PhotoService } from 'src/app/services/photo.service';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+import { Album } from 'src/app/models/album';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-albums',

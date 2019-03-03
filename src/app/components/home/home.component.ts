@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { PhotoService } from 'src/app/services/photo-service.service';
-import { PageEvent } from '@angular/material';
+import { PhotoService } from 'src/app/services/photo.service';
 import { Router } from '@angular/router';
+import { Photo } from 'src/app/models/photo';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   pageIndex: number;
   albumId: any;
 
-  constructor(private photoService: PhotoService, private router: Router) { 
+  constructor(private photoService: PhotoService, private router: Router) {
     this.length = 100;
     this.pageSize = 10;
     this.pageIndex = 1;

@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AlbumsComponent } from './albums.component';
+import { CoreModule } from 'src/app/core/core.module';
+import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 
 describe('AlbumsComponent', () => {
   let component: AlbumsComponent;
@@ -8,7 +11,8 @@ describe('AlbumsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AlbumsComponent ]
+      imports: [CoreModule, HttpClientModule, AppRoutingModule],
+      declarations: []
     })
     .compileComponents();
   }));
