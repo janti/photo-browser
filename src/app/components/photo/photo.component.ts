@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { PhotoService } from 'src/app/services/photo-service.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-photo',
@@ -11,7 +12,7 @@ export class PhotoComponent implements OnInit {
 
   photo: Photo;
 
-  constructor( private route: ActivatedRoute, private router: Router, private photoService: PhotoService) { }
+  constructor( private route: ActivatedRoute, private photoService: PhotoService, private location: Location) { }
 
   ngOnInit() {
     const id =  this.route.snapshot.paramMap.get('id');
@@ -25,5 +26,8 @@ export class PhotoComponent implements OnInit {
         this.photo.show = true;
       },
       (error: Error) => console.log(error));
-    }
+  }
+  goBack() {
+    this.location.back();
+  }
 }

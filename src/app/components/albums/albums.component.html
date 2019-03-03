@@ -1,0 +1,5 @@
+<div>
+  <div *ngFor="let album of albums">
+    <a mat-stroked-button (click)="albumSelected(album.id)">{{album.title}}</a> 
+  </div>
+</div>

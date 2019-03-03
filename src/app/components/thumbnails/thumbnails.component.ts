@@ -1,7 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { PhotoService } from 'src/app/services/photo-service.service';
-import { Router } from '@angular/router';
-import { PageEvent } from '@angular/material';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-thumbnails',
@@ -10,21 +7,24 @@ import { PageEvent } from '@angular/material';
 })
 export class ThumbnailsComponent implements OnInit {
 
-  photos: Photo[] = [];
-  length = 100;
-  pageSize = 10;
+  @Input() photos: Photo[] = [];
+  @Input() length = 100;
+  @Input() pageSize = 10;
+  @Input() pageIndex = 1;
+  albumId: any;
   pageSizeOptions: number[] = [5, 10, 25, 100];
-  pageEvent: PageEvent;
-  pageIndex = 1;
+  @Output() photoClicked = new EventEmitter<number>();
+  @Output() pageInfoChanged = new EventEmitter<any>();
 
-  constructor( private photoService: PhotoService, private router: Router) {}
+  constructor() {}
 
   ngOnInit() {
-    this.getPhotos();
-    this.getPhotosCount();
+    this.photos.forEach( (photo: Photo) => {
+      photo.show = false;
+    });
   }
 
-  getPhotos() {
+  /*getPhotos() {
     this.photoService.getPhotos( this.pageSize, this.pageIndex ). subscribe(
       (photos: Photo[] ) => {
         this.photos.forEach( (photo: Photo) => {
@@ -33,19 +33,21 @@ export class ThumbnailsComponent implements OnInit {
         this.photos = photos; },
       (error) => console.log(error));
   }
+ 
   getPhotosCount() {
     this.photoService.getAllPhotos().subscribe(
       (photos: Photo[] ) => this.length = photos.length,
       (error) => console.log(error));
-  }
-  photoClicked(id: number) {
-    this.router.navigate(['/photo', id]);
+  }*/
+  onPhotoClicked(id: number) {
+    this.photoClicked.emit(id);
   }
 
-  pageInfoChanged( event: any ) {
-    this.pageSize = event.pageSize;
+  onPageInfoChanged(event: any) {
+    this.pageInfoChanged.emit(event);
+    /*this.pageSize = event.pageSize;
     this.pageIndex = event.pageIndex + 1;
-    this.getPhotos();
+    this.getPhotos();*/
    }
 
 }

@@ -5,16 +5,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule, MatGridListModule, MatToolbarModule, MatButtonModule } from '@angular/material';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { DeferLoadModule } from '@trademe/ng-defer-load';
-import { ThumbnailsComponent } from './components/thumbnails/thumbnails.component';
-import { PhotoComponent } from './components/photo/photo.component';
 import { CoreModule } from './core/core.module';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { AlbumThumbnailsComponent } from './components/albums/album-thumbnails/album-thumbnails.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +22,6 @@ import { CoreModule } from './core/core.module';
     CoreModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, ToolbarComponent]
 })
 export class AppModule { }

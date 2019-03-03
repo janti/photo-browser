@@ -2,7 +2,7 @@
     <mat-grid-list cols="5">
       <mat-grid-tile *ngFor="let photo of photos" (deferLoad)="photo.show=true"> 
         <mat-card *ngIf="photo.show">
-          <img  [class]="expression" mat-card-content src={{photo.thumbnailUrl}} alt="" (click)="photoClicked(photo.id)"/> 
+           <img  [class]="expression" mat-card-content src={{photo.thumbnailUrl}} alt="" (click)="onPhotoClicked(photo.id)"/>     
         </mat-card>
       </mat-grid-tile>
     </mat-grid-list>
@@ -10,6 +10,6 @@
         [length]="length"
         [pageSize]="pageSize"
         [pageSizeOptions]="pageSizeOptions"
-        (page)="pageInfoChanged($event)"> 
+        (page)="onPageInfoChanged($event)"> 
     </mat-paginator>
 </div>
