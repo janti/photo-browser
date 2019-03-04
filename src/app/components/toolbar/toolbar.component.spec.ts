@@ -4,6 +4,8 @@ import { ToolbarComponent } from './toolbar.component';
 import { CoreModule } from 'src/app/core/core.module';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterTestingModule } from '@angular/router/testing';
+import { By } from '@angular/platform-browser';
 
 describe('ToolbarComponent', () => {
   let component: ToolbarComponent;
@@ -14,7 +16,8 @@ describe('ToolbarComponent', () => {
       imports: [
         CoreModule,
         AppRoutingModule,
-        HttpClientModule],
+        HttpClientModule,
+        RouterTestingModule],
       declarations: [ ToolbarComponent ]
     })
     .compileComponents();
@@ -28,5 +31,17 @@ describe('ToolbarComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should render mat-toolbar', () => {
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('mat-toolbar'));
+  });
+
+  it('should render a', () => {
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('a'));
   });
 });

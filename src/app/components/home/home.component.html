@@ -1,8 +1,10 @@
-<app-thumbnails
-  [photos]="photos"
-  [length]="length"
-  [pageSize]="pageSize"
-  [pageIndex]="pageIndex"
-  (photoClicked)="photoClicked($event)"
-  (pageInfoChanged)="pageInfoChanged($event)"
-></app-thumbnails>
+<div>
+  <app-thumbnails
+    [photos]="photos"
+    [length]="length"
+    [pageSize]="pageSize"
+    [pageIndex]="pageIndex"
+    (photoClicked)="photoClicked($event)"
+    (pageInfoChanged)="pageInfoChanged($event)"
+  ></app-thumbnails>
+</div>

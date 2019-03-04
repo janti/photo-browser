@@ -27,4 +27,10 @@ describe('AlbumThumbnailsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should render app-thumbnails', () => {
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('app-thumbnails'));
+  });
 });

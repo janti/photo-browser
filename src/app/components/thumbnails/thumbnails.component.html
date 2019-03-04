@@ -1,4 +1,4 @@
-<div class="container">
+<div>
     <mat-grid-list cols="5">
       <mat-grid-tile *ngFor="let photo of photos" (deferLoad)="photo.show=true"> 
         <mat-card *ngIf="photo.show">

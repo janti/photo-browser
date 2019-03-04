@@ -30,4 +30,16 @@ describe('ThumbnailsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should render mat-grid-list', () => {
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('mat-grid-list'));
+  });
+
+  it('should render mat-paginator', () => {
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('mat-paginator'));
+  });
 });

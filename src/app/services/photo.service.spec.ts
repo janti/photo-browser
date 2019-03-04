@@ -6,7 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 describe('PhotoServiceService', () => {
   beforeEach(() => TestBed.configureTestingModule({
     imports: [
-      HttpClientModule],
+      HttpClientModule
+    ],
   }));
 
   it('should be created', () => {

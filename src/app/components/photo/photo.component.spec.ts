@@ -30,4 +30,22 @@ describe('PhotoComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should render mat-card', () => {
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('mat-card'));
+  });
+
+  it('should render mat-header', () => {
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('mat-header'));
+  });
+
+  it('should render img', () => {
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('img'));
+  });
 });

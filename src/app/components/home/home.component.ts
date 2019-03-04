@@ -24,27 +24,30 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getPhotos();
-    this.getPhotosCount();
+    this.initializePhotos();
+    this.initializePhotosCount();
   }
-  getPhotos() {
+
+  initializePhotos() {
     this.photoService.getPhotos( this.pageSize, this.pageIndex ). subscribe(
       (photos: Photo[] ) => {
         this.photos = photos; },
-      (error) => console.log(error));
+      (error: any) => console.log(error));
   }
-  getPhotosCount() {
+
+  initializePhotosCount() {
     this.photoService.getAllPhotos().subscribe(
       (photos: Photo[] ) => this.length = photos.length,
-      (error) => console.log(error));
+      (error: any) => console.log(error));
   }
-  photoClicked(id: any) {
+
+  photoClicked(id: string) {
     this.router.navigate(['home/photo', id]);
   }
+
   pageInfoChanged(event: any) {
     this.pageSize = event.pageSize;
     this.pageIndex = event.pageIndex + 1;
-    this.getPhotos();
+    this.initializePhotos();
   }
-
 }

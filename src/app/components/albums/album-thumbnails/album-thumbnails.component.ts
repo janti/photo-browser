@@ -26,16 +26,18 @@ export class AlbumThumbnailsComponent implements OnInit {
 
   ngOnInit() {
     this.albumId =  this.route.snapshot.paramMap.get('albumId');
-    this.getPhotos();
-    this.getPhotosCount();
+    this.initializePhotos();
+    this.initializePhotoCount();
   }
-  getPhotos() {
+
+  initializePhotos() {
     this.photoService.getPhotosFromAlbum( this.pageSize, this.pageIndex, this.albumId ). subscribe(
       (photos: Photo[] ) => {
         this.photos = photos; },
       (error) => console.log(error));
   }
-  getPhotosCount() {
+
+  initializePhotoCount() {
     this.photoService.getAllAlbumPhotos(this.albumId).subscribe(
       (photos: Photo[] ) => this.length = photos.length,
       (error) => console.log(error));
@@ -44,11 +46,13 @@ export class AlbumThumbnailsComponent implements OnInit {
   photoClicked(id: any) {
     this.router.navigate(['/albums/thumbnails/photo', id]);
   }
+
   pageInfoChanged(event: any) {
     this.pageSize = event.pageSize;
     this.pageIndex = event.pageIndex + 1;
-    this.getPhotos();
+    this.initializePhotos();
   }
+
   goBack() {
     this.location.back();
   }

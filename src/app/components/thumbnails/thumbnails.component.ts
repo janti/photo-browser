@@ -20,6 +20,8 @@ export class ThumbnailsComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
+
+    // For lazy loading feature
     this.photos.forEach( (photo: Photo) => {
       photo.show = false;
     });
