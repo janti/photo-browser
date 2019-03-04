@@ -15,10 +15,10 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    CoreModule
+    CoreModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent, ToolbarComponent]

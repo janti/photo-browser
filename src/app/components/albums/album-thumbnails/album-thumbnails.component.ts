@@ -34,16 +34,16 @@ export class AlbumThumbnailsComponent implements OnInit {
     this.photoService.getPhotosFromAlbum( this.pageSize, this.pageIndex, this.albumId ). subscribe(
       (photos: Photo[] ) => {
         this.photos = photos; },
-      (error) => console.log(error));
+      (error: any) => console.log(error));
   }
 
   initializePhotoCount() {
     this.photoService.getAllAlbumPhotos(this.albumId).subscribe(
       (photos: Photo[] ) => this.length = photos.length,
-      (error) => console.log(error));
+      (error: any) => console.log(error));
   }
 
-  photoClicked(id: any) {
+  photoClicked(id: string) {
     this.router.navigate(['/albums/thumbnails/photo', id]);
   }
 

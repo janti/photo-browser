@@ -17,7 +17,10 @@ export class PhotoComponent implements OnInit {
 
   ngOnInit() {
     const id =  this.route.snapshot.paramMap.get('id');
-    this.initializePhoto(id);
+
+    if ( id ) {
+      this.initializePhoto(id);
+    }
   }
 
   initializePhoto(id: string) {
