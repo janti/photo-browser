@@ -2,6 +2,8 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.3.
 
+Web application reads JSON data from http://jsonplaceholder.typicode.com/ and shows thumbnails, photos and albums to user. User can select either all photos or photos from single album. From thumbnails user is able to open photo as in original size. 
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

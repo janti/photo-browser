@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PhotoService } from 'src/app/services/photo.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Photo } from 'src/app/models/photo';
+import { Subscription } from 'rxjs';
+
+const INITIAL_LENGTH = 100;
+const INITIAL_PAGE_SIZE = 10;
+const STARTING_INDEX = 1;
+const ALBUM_ID_PARAMETER = 'albumId';
+const PHOTO_URL = '/albums/thumbnails/photo';
 
 @Component({
   selector: 'app-album-thumbnails',
   templateUrl: './album-thumbnails.component.html',
   styleUrls: ['./album-thumbnails.component.scss']
 })
-export class AlbumThumbnailsComponent implements OnInit {
+export class AlbumThumbnailsComponent implements OnInit, OnDestroy {
 
   albumId: string;
   photos: Photo[] = [];
@@ -18,33 +25,52 @@ export class AlbumThumbnailsComponent implements OnInit {
   pageSizeOptions: number[] = [5, 10, 25, 100];
   pageIndex: number;
 
-  constructor(private photoService: PhotoService, private router: Router, private route: ActivatedRoute, private location: Location ) {
-    this.length = 100;
-    this.pageSize = 10;
-    this.pageIndex = 1;
+  photosFromAlbumSubscription: Subscription;
+  allPhotosSubscription: Subscription;
+
+  constructor(
+    private photoService: PhotoService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private location: Location ) {
+
+    this.length = INITIAL_LENGTH;
+    this.pageSize = INITIAL_PAGE_SIZE;
+    this.pageIndex = STARTING_INDEX;
    }
 
   ngOnInit() {
-    this.albumId =  this.route.snapshot.paramMap.get('albumId');
+    this.albumId =  this.route.snapshot.paramMap.get(ALBUM_ID_PARAMETER);
     this.initializePhotos();
     this.initializePhotoCount();
   }
 
+  ngOnDestroy() {
+    if ( this.allPhotosSubscription ) {
+      this.allPhotosSubscription.unsubscribe();
+    }
+    if ( this.photosFromAlbumSubscription ) {
+      this.photosFromAlbumSubscription.unsubscribe();
+    }
+  }
+
   initializePhotos() {
-    this.photoService.getPhotosFromAlbum( this.pageSize, this.pageIndex, this.albumId ). subscribe(
-      (photos: Photo[] ) => {
-        this.photos = photos; },
-      (error: any) => console.log(error));
+   this.photosFromAlbumSubscription =
+     this.photoService.getPhotosFromAlbum( this.pageSize, this.pageIndex, this.albumId ).subscribe(
+        (photos: Photo[] ) => {
+          this.photos = photos; },
+        (error: any) => console.log(error));
   }
 
   initializePhotoCount() {
-    this.photoService.getAllAlbumPhotos(this.albumId).subscribe(
-      (photos: Photo[] ) => this.length = photos.length,
-      (error: any) => console.log(error));
+    this.allPhotosSubscription =
+      this.photoService.getAllAlbumPhotos(this.albumId).subscribe(
+        (photos: Photo[] ) => this.length = photos.length,
+        (error: any) => console.log(error));
   }
 
   photoClicked(id: string) {
-    this.router.navigate(['/albums/thumbnails/photo', id]);
+    this.router.navigate([PHOTO_URL, id]);
   }
 
   pageInfoChanged(event: any) {

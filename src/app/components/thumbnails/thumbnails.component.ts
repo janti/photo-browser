@@ -1,6 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Photo } from 'src/app/models/photo';
 
+const DEFAULT_LENGTH = 100;
+const DEFAULT_PAGE_SIZE = 10;
+const STARTING_INDEX = 1;
+
 @Component({
   selector: 'app-thumbnails',
   templateUrl: './thumbnails.component.html',
@@ -9,13 +13,15 @@ import { Photo } from 'src/app/models/photo';
 export class ThumbnailsComponent implements OnInit {
 
   @Input() photos: Photo[] = [];
-  @Input() length = 100;
-  @Input() pageSize = 10;
-  @Input() pageIndex = 1;
-  albumId: any;
-  pageSizeOptions: number[] = [5, 10, 25, 100];
+  @Input() length = DEFAULT_LENGTH;
+  @Input() pageSize = DEFAULT_PAGE_SIZE;
+  @Input() pageIndex = STARTING_INDEX;
+
   @Output() photoClicked = new EventEmitter<number>();
   @Output() pageInfoChanged = new EventEmitter<any>();
+
+  albumId: string;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
 
   constructor() {}
 
